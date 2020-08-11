@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>编程猫账号登录|学猫叫</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+<link href="/static/assets/dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+  <div class="form-signin" id="form">
+  <img class="mb-4" src="https://getbootstrap.net/example/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">请登录您的编程猫账号</h1>
+  <label for="inputID" class="sr-only">编程猫账号</label>
+  <input type="text" onkeydown=show() id="userid" class="form-control" placeholder="编程猫账号" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" onkeydown=show() id="userpassword" class="form-control" placeholder="编程猫密码" required>
+  
+  <button class="btn btn-lg btn-primary btn-block" id='Ender' onclick=login()>登录</button>
+  <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+  </div>
+<script>
+  function success(data){
+    alert(data.message);
+    document.getElementById("Ender").removeAttribute("disabled");
+    if (data.message == '登录成功，准备跳转'){
+      var gotourl = data.return
+      window.location.href=gotourl;
+    }
+  }
+  function login(){
+  document.getElementById("Ender").setAttribute("disabled", true);
+  var id = document.getElementById("userid").value
+  var passwd = document.getElementById("userpassword").value
+  var pagesurl = window.location.href;
+  var posturl = pagesurl.replace('/login/', '/post/')
+  var data = {"phone":id,"password":passwd}
+  if (id == ''){
+      alert('账号不可为空')
+      document.getElementById("Ender").removeAttribute("disabled");
+      return ;
+  }
+  if (passwd == ''){
+      alert('密码不可为空')
+      document.getElementById("Ender").removeAttribute("disabled");
+      return ;
+  }
+  var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+  httpRequest.open('POST', posturl, true); //第二步：打开连接/***发送json格式文件必须设置请求头 ；如下 - */
+  httpRequest.setRequestHeader("Content-type","application/json");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）var obj = { name: 'zhansgan', age: 18 };
+  httpRequest.send(JSON.stringify(data));//发送请求 将json写入send中
+  httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
+        var json = httpRequest.responseText;//获取到服务端返回的数据
+        var obj = JSON.parse(json);
+        success(obj);
+    }
+};
+  }
+function show(){
+      var e=window.event||arguments.callee.caller.arguments[0];
+      if(e.keyCode==13){
+          login()
+      }
+    }
+   
+</script>
+</body>
+</html>
