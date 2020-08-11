@@ -7,8 +7,12 @@ import requests
 import re
 #导入库
 
-html = render_template("page.html")#加载html页，
-app=Flask(__name__,static_folder="static",template_folder='templates') 
+#html = render_template("page.html")#加载html页，
+#app=Flask(__name__,static_folder="static",template_folder='templates')
+f=open('./static/index.html', 'rb')#读取html页面文件
+html = f.read()#加载html页，
+f.close()
+app=Flask(__name__)  
 
 
 @app.route('/newloginrequest',methods=['POST'])    #新登录请求的函数部分 
