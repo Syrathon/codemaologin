@@ -57,5 +57,5 @@ server {
 发送域名：$host
 名字：随意 
 如下图所示：
-![](/img/bt.png)
+![](https://cdn.jsdelivr.net/gh/lovelyxmj/codemaologin/img/bt.png)
 然后您就可以使用了  
