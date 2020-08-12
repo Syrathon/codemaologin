@@ -14,12 +14,12 @@
 我们已将该接口部署到我们的服务器上面，接入方法请看 [接口文档](https://docs.oauth.b.syrathon.com/)
 
 ### 部署
-如果您想将本项目布置到您的服务器，请看下面  
+如果您想将本项目部署到您的服务器，请看下面  
 **clone 本仓库**
 **安装依赖 **
 1. 安装 Python3,必须 Python3~  
 2. 安装库  
-`flask``requests``pymysql `
+`flask` `requests` `pymysql `
 
 **准备数据库**
 1. 新建一个数据库  
