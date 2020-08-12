@@ -89,7 +89,7 @@ def postlogin(loginid):
                 return {"code":"ERROR","message":"未能通知回调地址"}
             else:
                 if 'OK' == HTTPPOST.text:#如果回调服务器返回正确
-                    return({"code":"OK","message":"登录成功，准备跳转","return":returnurl})
+                    return({"code":"OK","message":"登录成功，准备跳转","return":returnurl,"loginid":loginid})
                 else:
                     print(callback)#调试用可以注释
                     return {"code":"ERROR","message":"未能通知回调地址"}
