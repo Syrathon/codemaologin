@@ -6,8 +6,8 @@
 欢迎使用本接口🎉🎉🎉
 
 ### 注意    
-合并分支一般不直接合并到`master`,可以新建一个分支或合并到`lovely`分支
-
+合并分支一般不直接合并到`master`,可以新建一个分支或合并到`lovely`分支  
+未经允许对`master`分支的 Pull Requests 会被 Close
  
 ### 使用接口
 
@@ -44,7 +44,7 @@ server {
     location / { # 访问80端口后的所有路径都转发到 proxy_pass 配置的ip中
         root   /usr/share/nginx/html;
         index  index.html index.htm;
-   		proxy_pass http://127.0.0.1”7414; # 反向代理地址及端口（必须加上http://）
+   		proxy_pass http://127.0.0.1:7414; # 反向代理地址及端口（必须加上http://）
     }
 }
 ```
