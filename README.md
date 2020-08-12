@@ -53,9 +53,9 @@ server {
 **如果服务器上安装了宝塔面板**
 
 则这样配置  
-目标URL:127.0.0.1:7414  
-发送域名：$host
-名字：随意 
+- 目标URL:127.0.0.1:7414  
+- 发送域名：$host
+- 名字：随意 
 如下图所示：
 ![](https://cdn.jsdelivr.net/gh/lovelyxmj/codemaologin/img/bt.png)
 然后您就可以使用了  
