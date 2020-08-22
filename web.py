@@ -58,6 +58,17 @@ def newloginre():
 
 @app.route('/codemaologin/login/<loginid>',methods=['GET'])#用户前端登录接口
 def login(loginid):
+
+    if '\'' in loginid:     #过滤掉没用并且有问题的东西
+        return '去你妈的SQL注入，老娘不吃你这一套', '250 Fuck Your Mother'
+    elif 'fuck' in loginid or 'Fuck' in loginid :
+        return '哼，反弹，永久反弹', '250 Fuck Your Mother'
+    
+    try:
+        int(loginid)
+    except ValueError:
+        return '参数里好像混入了什么不该混进去的东西'
+        
     loginlog = sql.queries(f'SELECT * FROM loginre WHERE type="peting" AND loginid = {loginid}')#查询id是否已经在数据库
     if loginid in str(loginlog):
         return html
@@ -66,6 +77,17 @@ def login(loginid):
 
 @app.route('/codemaologin/post/<loginid>',methods=['POST'])#用户登录接口
 def postlogin(loginid):
+
+    if '\'' in loginid:     #过滤掉没用并且有问题的东西
+        return '去你妈的SQL注入，老娘不吃你这一套', '250 Fuck Your Mother'
+    elif 'fuck' in loginid or 'Fuck' in loginid :
+        return '哼，反弹，永久反弹', '250 Fuck Your Mother'
+
+    try:
+        int(loginid)
+    except ValueError:
+        return '参数里好像混入了什么不该混进去的东西'
+
     loginlog = sql.queries(f'SELECT * FROM loginre WHERE type="peting" AND loginid = {loginid}')#查找登录请求
     if loginid in str(loginlog):#如果是已知登录请求
         data =  request.get_json()#获得参数
